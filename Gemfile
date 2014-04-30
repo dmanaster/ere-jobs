@@ -43,4 +43,6 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'rails_12factor'
 gem 'better_errors', group: :development
 gem 'binding_of_caller'
+gem 'devise'
+
 ruby '2.1.1'
