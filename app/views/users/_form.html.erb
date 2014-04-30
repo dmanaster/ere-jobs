@@ -19,10 +19,15 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
-    <%= f.label :user_name %><br>
-    <%= f.text_field :user_name %>
-  </div>
+
+  <% if current_user && current_user.role == "admin" %>
+    <div class="field">
+      <%= f.label :role %><br>
+      <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    </div>
+  <% end %>
+
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
@@ -35,8 +40,6 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
-
-
   <div class="actions">
     <%= f.submit %>
   </div>
