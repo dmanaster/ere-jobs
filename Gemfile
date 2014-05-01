@@ -44,5 +44,6 @@ gem 'rails_12factor'
 gem 'better_errors', group: :development
 gem 'binding_of_caller'
 gem 'devise'
+gem 'font-awesome-rails'
 
 ruby '2.1.1'
