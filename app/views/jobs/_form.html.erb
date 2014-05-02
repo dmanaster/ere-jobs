@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
   <% if current_user.companies.exists? %>
     <div class="field">
       <%= f.label :company_id %><br>
       <%= f.collection_select :company_id, current_user.companies, :id, :name %>
+      <%= link_to "Add a company", new_company_path %>
     </div>
   <% else %>
-    <%= link_to "Add a company", new_company_path %>
+    <div>
+      <%= link_to "Add a company", new_company_path %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.number_field :company_id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
