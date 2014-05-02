@@ -10,6 +10,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @jobs = @company.jobs
   end
 
   # GET /companies/new
@@ -25,9 +26,12 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
+    @user = User.find(params[:user_id])
     respond_to do |format|
       if @company.save
+        if params[:employee] == "true"
+          @user.companies << @company
+        end
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
       else

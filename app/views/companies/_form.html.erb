@@ -12,9 +12,22 @@
   <% end %>
 
   <div class="field">
+    <%= hidden_field_tag 'user_id', current_user.id %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
+  <% if current_user.role == "admin" %>
+    <%= label_tag "This is my company" %><br>
+    <%= check_box_tag 'employee', "true", true %>
+  <% else %>
+    <%= hidden_field_tag 'employee', "true" %>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
